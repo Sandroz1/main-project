@@ -168,7 +168,7 @@ p, li, ul, a {
   flex-direction: column;
   gap: 2rem;
   background: rgba(255, 255, 255, 0.6);
-  border-radius: 30px;
+  border-radius: 20px;
   padding: 2rem;
 }
 .main__content__link {
@@ -204,7 +204,7 @@ p, li, ul, a {
 }
 .main__content__title {
   color: #000000;
-  font-size: 43px;
+  font-size: 35px;
   -webkit-text-stroke: 1px #000000;
   font-weight: 900;
   font-family: "Montserrat", sans-serif;
@@ -248,6 +248,14 @@ p, li, ul, a {
   opacity: 100%;
   cursor: pointer;
   scale: 1.1;
+}
+
+.map-first {
+  border-radius: 20px;
+}
+
+.map-second {
+  border-radius: 20px;
 }
 
 .main__hide__cards {

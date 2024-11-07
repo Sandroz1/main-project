@@ -1,328 +1,173 @@
-const burger = document.querySelector(".burger__image")
-burger.addEventListener("click",burgerf)
-let counter = 0
-function burgerf(){
+const burger = document.querySelector(".burger__image");
+burger.addEventListener("click", burgerf);
+let counter = 0;
+function burgerf() {
   const menu = document.querySelector(".header__burger");
 
-  if (counter == 0){
-    menu.style.display = 'flex';
-    counter++
-    console.log(counter)
-    body.style.overflow = 'hidden'
+  if (counter == 0) {
+    menu.style.display = "flex";
+    counter++;
 
+    body.style.overflow = "hidden";
+  } else if (counter == 1) {
+    menu.style.display = "none";
+    counter--;
 
-  }else if(counter == 1){
-    menu.style.display = 'none';
-    counter--
-    console.log(counter)
-    body.style.overflow = 'auto'
+    body.style.overflow = "auto";
   }
-
 }
 
 // .......................
-const cards = document.querySelector(".main__content__cards");
-const btn11 = document.getElementById("btn1")
-const btn22 = document.getElementById("btn2")
-const btn33 = document.getElementById("btn3")
-btns = document.querySelectorAll(".main__header__button")
-const btn1 = document.getElementById("btn1").onclick = bat1;
-const btn2 = document.getElementById("btn2").onclick = bat2;
-const btn3 = document.getElementById("btn3").onclick = bat3;
-const filterButtons = document.querySelectorAll('.main__header__filter');
+document.addEventListener("DOMContentLoaded", function () {
+  let allData = [];
+  const url = "https://672885dc270bd0b97555ee35.mockapi.io/id";
+  const id = 1;
+  const urll = `${url}/${id}`;
 
+  function displayCards(data, page) {
+    cardsContainer.innerHTML = "";
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const paginatedData = data.slice(start, end);
 
+    paginatedData.forEach((item) => {
+      let newData = {
+        frame: item.id,
+      };
+      const card = createCard(item);
+      card.addEventListener("click", async () => {
+        try {
+          const response = await fetch(urll, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newData),
+          });
 
-pol = [];
-let mainCount = 1
-let filterCount = 1
-function bat1(){
-  localStorage.setItem("pagination", JSON.stringify('page 1'));
-    mainCount = 1
-    if(mainCount == 1){
-        for(let i = 0; i < btns.length; i++){
-            btns[i].style.background = '#FFFFFF'
-       }
-  btn11.style.background = '#FFB04F'
+          if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+          }
 
-    }
+          const data = await response.json();
+          console.log('Success:', data);
 
+          // Здесь можно добавить код для открытия модального окна
+          // modal.style.display = "flex";
+          // mText.textContent = item.discriprion;
+          // iframe.src = item.map;
+        } catch (error) {
+          console.error('There was a problem with the fetch operation:', error);
+        }
+      });
 
-    card1 = document.querySelectorAll(".main__content__card");
-    for (let i = 0; i < card1.length; i++){
-        cards.removeChild(card1[i])
-    }
+      cardsContainer.appendChild(card);
+    });
+  }
 
-    const cardImages = ["./assets/image/dos1.svg","./assets/image/dos2.svg","./assets/image/dos3.svg"]
-    const namesImages = ["Агурские водопады","Водопад Поликаря","Водопад Плачущие скалы"]
-    const namesIClass = ["category1","category1","category2"]
-    if (cardImages.length > 0){
-    for (let i = 0; i < cardImages.length; i++) {
-        
+  const cardsContainer = document.getElementById("cards");
+  const searchInput = document.getElementById("input");
+  const filterButtons = document.querySelectorAll(".main__header__filter");
+  const paginationContainer = document.querySelector(".main__header__slide");
 
-        const card = document.createElement("div");
-        card.classList.add("main__content__card")
-        card.dataset.name = namesIClass[i];
-        card.innerHTML = `
-        <div class="main__content__card__container" >
-        <img src="${cardImages[i]}" alt="Card image cap">
-        
-          <h2 class="main__content__card__title"> ${namesImages[i]} </h2>
-        </div>
-        `;
-        console.log(card);
-        console.log(cards);
-        
-        
-        cards.appendChild(card);
-        
-   }
-   
-}else{
-    const card = document.createElement("div");
-    card.classList.add("main__content__card");
-    card.innerHTML = `
-    <div class="main__content__card__container">
+  let currentPage = 1;
+  const itemsPerPage = 3;
+  let filteredData = [];
 
-      <h2 class="main__content__card__none"> Ничего не найдено </h2>
-    </div>
-    `;
-    console.log(card);
-    console.log(cards);
-
+  function createCard(item) {
+    const card = document.createElement("a");
+    card.className = "main__content__card";
     
-    cards.appendChild(card);
-}
-const items = document.querySelectorAll('.main__content__card');
-for(let i = 0; i < filterButtons.length; i++){
-    filterButtons[i].style.background = '#fff'
-    }
-   filterButtons[0].style.background = '#FFB04F'
+    // card.href = "./buicard.html";
+    card.innerHTML = `
+        <a href="./buicard.html" class="header__image-link">
+          <img class = "main__content__image" src="./assets/image/dos${item.id}.svg" alt="Изображение отсутствует">
+          <h3 class="main__content__card__title"> ${item.name}</h3>
+        </a>
 
-filterButtons.forEach((button,i) => {
-    localStorage.setItem("filter",'all') ;
-    button.addEventListener('click', function() {
-        localStorage.setItem("filter",button.getAttribute('data-filter') );
-        for(let i = 0; i < filterButtons.length; i++){
-            filterButtons[i].style.background = '#fff'
-            }
-            filterButtons[i].style.background = '#FFB04F'
+        `;
 
-   
+    // <p>${item.description}</p>
+    // <p>Категория: ${item.category}</p>
 
-        const filterValue = this.getAttribute('data-filter');
-        console.log(items)
+    return card;
+  }
 
-        items.forEach(item => {
- 
-            console.log()
-            if (filterValue === 'all' || item.getAttribute('data-name') === filterValue) {
-                item.style.display = 'flex';
-            } else {
-                item.style.display = 'none';
-            }
+  function updatePagination(data) {
+    paginationContainer.innerHTML = "";
+    const totalPages = Math.ceil(data.length / itemsPerPage);
+
+    for (let i = 1; i <= totalPages; i++) {
+      const button = document.createElement("button");
+      button.className = "main__header__button";
+      button.id = i;
+      button.textContent = i;
+      if (button.id == 1) {
+        button.style.backgroundColor = "#00C8FF";
+      }
+      button.addEventListener("click", () => {
+        btnAll.forEach((btn) => {
+          btn.style.backgroundColor = "#fff";
         });
+
+        currentPage = i;
+        displayCards(allData, currentPage);
+        button.style.backgroundColor = "#00C8FF";
+      });
+      paginationContainer.appendChild(button);
+    }
+    const btnAll = document.querySelectorAll(".main__header__button");
+  }
+
+  function filterData(category) {
+    if (category === "all") {
+      filteredData = allData;
+    } else {
+      filteredData = allData.filter((item) => item.category === category);
+    }
+    currentPage = 1;
+    displayCards(filteredData, currentPage);
+    updatePagination(filteredData);
+  }
+
+  // Смена цвета по нажатию на кнопку
+  filterButtons.forEach((button) => {
+    filterButtons[0].style.backgroundColor = "#00C8FF";
+    button.addEventListener("click", () => {
+      filterButtons.forEach((button) => {
+        button.style.backgroundColor = "#fff";
+      });
+      button.style.backgroundColor = "#00C8FF";
+      filterData(button.dataset.filter);
+    });
+  });
+
+  // Поиск
+  searchInput.addEventListener("input", () => {
+    const searchTerm = searchInput.value.toLowerCase();
+    filteredData = allData.filter((item) =>
+      item.name.toLowerCase().includes(searchTerm)
+    );
+    currentPage = 1;
+    displayCards(filteredData, currentPage);
+    updatePagination(filteredData);
+  });
+
+  // Инициализация
+  const spiner = document.querySelector(".spiner");
+  spiner.style.display = "flex";
+
+  fetch("https://672885dc270bd0b97555ee35.mockapi.io/repos")
+    .then((response) => response.json())
+    .then((data) => {
+      spiner.style.display = "none";
+      allData = data; // Сохраняем данные в переменную allData
+      filteredData = allData; // Начальные данные
+      displayCards(filteredData, currentPage); // Отображаем карточки на первой странице
+      updatePagination(filteredData); // Обновляем пагинацию
+    })
+    .catch((error) => {
+      console.error('There was a problem with the fetch operation:', error);
+      spiner.style.display = "none";
     });
 });
-}
-
-bat1()
-localStorage.setItem("pagination", JSON.stringify('page 1'));
-
-function bat2(){
-  localStorage.setItem("pagination", JSON.stringify('page 2'));
-    mainCount = 2
-    if(mainCount == 2){
-        for(let i = 0; i < btns.length; i++){
-            btns[i].style.background = '#FFFFFF'
-       }
-        btn22.style.background = '#FFB04F'
-
-    }
-
-    card1 = document.querySelectorAll(".main__content__card");
-
-    for (let i = 0; i < card1.length; i++){
-        cards.removeChild(card1[i])
-    }
-
-    const cardImages = ["./assets/image/btn21.svg","./assets/image/btn22.svg","./assets/image/btn23.svg"]
-    const namesImages = ["Дагомысские корыта","Ореховский водопад","Змейковидные водопады"]
-    const namesIClass = ["category1","category1","category2"]
-
-    if (cardImages.length > 0){
-    for (let i = 0; i < cardImages.length; i++) {
-        
-
-        const card = document.createElement("div");
-        card.classList.add("main__content__card");
-        card.dataset.name = namesIClass[i];
-        card.innerHTML = `
-        <div class="main__content__card__container">
-        <img src="${cardImages[i]}" alt="Card image cap">
-        
-          <h2 class="main__content__card__title"> ${namesImages[i]} </h2>
-        </div>
-        `;
-        console.log(card);
-        console.log(cards);
-    
-        
-        cards.appendChild(card);
-    }}else{
-        const card = document.createElement("div");
-        card.classList.add("main__content__card");
-        card.innerHTML = `
-        <div class="main__content__card__container">
-
-          <h2 class="main__content__card__none"> Ничего не найдено </h2>
-        </div>
-        `;
-        console.log(card);
-        console.log(cards);
-    
-        
-        cards.appendChild(card);
-    }
-    const items = document.querySelectorAll('.main__content__card');
-    
-    for(let i = 0; i < filterButtons.length; i++){
-        filterButtons[i].style.background = '#fff'
-        }
-        filterButtons[0].style.background = '#FFB04F'
-    filterButtons.forEach((button,i) => {
-        localStorage.setItem("filter",'all' );
-        button.addEventListener('click', function() {
-            localStorage.setItem("filter",button.getAttribute('data-filter') );
-            for(let i = 0; i < filterButtons.length; i++){
-                filterButtons[i].style.background = '#fff'
-                }
-                    
-                filterButtons[i].style.background = '#FFB04F'
-            
-                    const filterValue = this.getAttribute('data-filter');
-            console.log(items)
-    
-            items.forEach(item => {
-     
-                console.log()
-                if (filterValue === 'all' || item.getAttribute('data-name') === filterValue) {
-                    item.style.display = 'flex';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
-        
-    });
-
-}
-function bat3(){
-  localStorage.setItem("pagination", JSON.stringify('page 3'));
-    mainCount = 3
-    if(mainCount == 3){
-        for(let i = 0; i < btns.length; i++){
-            btns[i].style.background = '#FFFFFF'
-       }
-  btn33.style.background = '#FFB04F'
-
-    }
-
-  
-    card1 = document.querySelectorAll(".main__content__card");
-   
-    for (let i = 0; i < card1.length; i++){
-        cards.removeChild(card1[i])
-    }
-
-    const cardImages = []
-    const namesImages = ["Дагомысские корыта","Ореховский водопад","Змейковидные водопады"]
-
-    if (cardImages.length > 0){
-        for (let i = 0; i < cardImages.length; i++) {
-        
-
-            const card = document.createElement("div");
-            card.classList.add("main__content__card");
-            card.innerHTML = `
-            <div  class="main__content__card__container">
-            <img src="${cardImages[i]}" alt="Card image cap">
-            
-              <h2 class="main__content__card__title"> ${namesImages[i]} </h2>
-            </div>
-            `;
-            console.log(card);
-            console.log(cards);
-        
-            
-            cards.appendChild(card);
-        }
-    }else{
-        const card = document.createElement("div");
-        card.classList.add("main__content__card");
-        card.innerHTML = `
-        <div class="main__content__card__container">
-
-          <h2 class="main__content__card__none"> Ничего не найдено </h2>
-        </div>
-        `;
-        console.log(card);
-        console.log(cards);
-    
-        
-        cards.appendChild(card);
-    }
-
-    
-}
-
-// if (mainCount == 1){
-//     const cardImages = ["./assets/image/dos1.svg","./assets/image/dos2.svg","./assets/image/dos3.svg"]
-//     const namesImages = ["Агурские водопады","Водопад Поликаря","Водопад Плачущие скалы"]
-//     for (let i = 0; i < cardImages.length; i++) {
-    
-//         const card = document.createElement("div");
-//         card.classList.add("main__content__card");
-//         card.innerHTML = `
-//         <div class="main__content__card__container">
-//         <img src="${cardImages[i]}" alt="Card image cap">
-        
-//           <h2 class="main__content__card__title"> ${namesImages[i]} </h2>
-//         </div>
-//         `;
-//         console.log(card);
-//         console.log(cards);
-        
-        
-//         cards.appendChild(card);
-//     }
-// }
-
-let input = document.querySelector('#input');
-    // let title = document.querySelectorAll('#title');
-input.oninput = function(){
-
-    let value = this.value.trim();
-    let list = document.querySelectorAll('.main__content__card__title');  
-    let card = document.querySelectorAll('.main__content__card');
-
-    // list.style.display = 'none';
-
-    list.forEach((elem,index) => {
-        // console.log(elem.innerHTML);
-        // console.log(card[index]);
-        let {style, innerText} = elem
-        let isElement = !!innerText.toLowerCase().search(value.toLowerCase())
-        
-        console.log(isElement);
-        
-        card[index].style.display = 'flex'; 
-        
-        console.log(card[index])
-        
-        if(!isElement) return
- 
-        card[index].style.display = 'none';
-    })
-}
- 

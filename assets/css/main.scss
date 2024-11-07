@@ -184,7 +184,7 @@ display: flex;
 
             gap: 2rem;
             background: rgba(255, 255, 255, 0.6);
-            border-radius: 30px;
+            border-radius: 20px;
             padding: 2rem;
         }
         &__link{
@@ -223,7 +223,7 @@ display: flex;
         }
         &__title{
             color: #000000;
-            font-size: 43px;
+            font-size: 35px;
             -webkit-text-stroke: 1px #000000; 
    
             font-weight: 900;
@@ -277,6 +277,12 @@ display: flex;
         
     }
 
+}
+.map-first{
+    border-radius: 20px;
+}
+.map-second{
+    border-radius: 20px;
 }
 .main__hide__cards{
 
