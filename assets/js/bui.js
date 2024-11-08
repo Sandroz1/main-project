@@ -31,11 +31,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const paginatedData = data.slice(start, end);
 
     paginatedData.forEach((item) => {
+      console.log(item);
+      const card = createCard(item);
+      const modal = document.querySelector(".modal");
       let newData = {
         frame: item.id,
       };
-      const card = createCard(item);
+
       card.addEventListener("click", async () => {
+        
         try {
           const response = await fetch(urll, {
             method: "PUT",
@@ -43,24 +47,30 @@ document.addEventListener("DOMContentLoaded", function () {
               "Content-Type": "application/json",
             },
             body: JSON.stringify(newData),
+            
           });
 
           if (!response.ok) {
-            throw new Error('Network response was not ok ' + response.statusText);
+            throw new Error(
+              "Network response was not ok " + response.statusText
+            );
           }
 
           const data = await response.json();
-          console.log('Success:', data);
-
-          // Здесь можно добавить код для открытия модального окна
-          // modal.style.display = "flex";
-          // mText.textContent = item.discriprion;
-          // iframe.src = item.map;
+          console.log("Success:", data);
         } catch (error) {
-          console.error('There was a problem with the fetch operation:', error);
+          console.error("There was a problem with the fetch operation:", error);
         }
+        // Здесь можно добавить код для открытия модального окна
+        
+        modal.style.display = "flex";
+        document.querySelector(".modal__text").textContent = item.discriprion;
+        document.getElementById("map1").src = item.map;
+        card.href = "./buicard.html";
       });
-
+      modal.addEventListener("click", () => {
+        modal.style.display = "none";
+      })
       cardsContainer.appendChild(card);
     });
   }
@@ -77,13 +87,12 @@ document.addEventListener("DOMContentLoaded", function () {
   function createCard(item) {
     const card = document.createElement("a");
     card.className = "main__content__card";
-    
-    // card.href = "./buicard.html";
+
     card.innerHTML = `
-        <a href="./buicard.html" class="header__image-link">
+
           <img class = "main__content__image" src="./assets/image/dos${item.id}.svg" alt="Изображение отсутствует">
           <h3 class="main__content__card__title"> ${item.name}</h3>
-        </a>
+
 
         `;
 
@@ -167,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
       updatePagination(filteredData); // Обновляем пагинацию
     })
     .catch((error) => {
-      console.error('There was a problem with the fetch operation:', error);
+      console.error("There was a problem with the fetch operation:", error);
       spiner.style.display = "none";
     });
 });

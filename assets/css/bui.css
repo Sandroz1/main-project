@@ -21,8 +21,8 @@
   height: 30vh;
   max-width: 59vh;
   font-size: 22px;
-  color: #ffffff;
-  background-color: rgba(0, 0, 0, 0.8);
+  color: #000;
+  background-color: rgba(255, 255, 255, 0.8);
   padding: 30px;
   border-radius: 20px;
 }
