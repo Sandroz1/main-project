@@ -287,7 +287,9 @@ a {
   .main__hide__card__image {
     width: 800px;
   }
-
+  .main__list__card__image{
+    max-width: 40vh;
+  }
   .main {
     width: 100%;
     gap: 5vh;
@@ -314,7 +316,7 @@ a {
     }
     &__content {
       &__container {
-        max-width: 350px;
+        max-width: 35vh;
         display: flex;
         margin: 0 auto;
       }
@@ -329,6 +331,8 @@ a {
       }
       //    ..............................
       &__map {
+        display: flex;
+        flex-direction: column;
         justify-content: center;
       }
       &__button {
@@ -336,11 +340,14 @@ a {
         margin: 0 auto;
       }
       .map-first {
-        width: 400px;
+        width: 40vh;
+        margin: 0 auto;
       }
       .map-second {
-        width: 400px;
+        width: 40vh;
+        margin: 0 auto;
       }
+
     }
     &__list {
       justify-content: center;
@@ -365,6 +372,7 @@ a {
   .main__content {
     display: flex;
     justify-content: center;
+
   }
 }
 .main__hide__card {
@@ -392,6 +400,9 @@ a {
 @media (max-width: 1650px) {
   .main__container {
     flex-direction: column;
+  }
+  .main__list__container{
+    justify-content: center;
   }
 }
 @media (max-width: 1000px) {
