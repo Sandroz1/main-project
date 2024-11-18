@@ -1,14 +1,9 @@
-// import {date} from './moc/index.js'
-
-// import {date} from './moc/index.js';
-
 const form_btn = document.querySelector(".main__button-create");
 const form = document.querySelector(".main__form__container");
 let formCount = 0;
 form_btn.addEventListener("click", formcheck);
 
 function formcheck() {
-  console.log(formCount);
   if (formCount === 1) {
     formCount--;
     form.style.scale = 0;
@@ -25,7 +20,6 @@ const pol = [];
 
 const buttonSend = document.querySelector(".main__form__send-form");
 
-// const pol = []
 let buttonNumber = document.querySelector(".main__form__number");
 
 let reg = /[A-Za-zA-Яа-яЁё]/g;
@@ -50,32 +44,26 @@ function funcSend() {
 
   pol.push(formObj);
   localStorage.setItem("input", JSON.stringify(pol));
-  inputName = 0
-  console.log(pol);
-  document.querySelector(".main__form__name").value = '';
-  document.querySelector(".main__form__message").value = '';
-  document.querySelector(".main__form__number").value = '';
+  inputName = 0;
+  document.querySelector(".main__form__name").value = "";
+  document.querySelector(".main__form__message").value = "";
+  document.querySelector(".main__form__number").value = "";
 }
 
-const burger = document.querySelector(".burger__image")
-let body = document.querySelector("body")
-burger.addEventListener("click",burgerf)
-let counter = 0
-function burgerf(){
+const burger = document.querySelector(".burger__image");
+let body = document.querySelector("body");
+burger.addEventListener("click", burgerf);
+let counter = 0;
+function burgerf() {
   const menu = document.querySelector(".header__burger");
 
-  if (counter == 0){
-    menu.style.display = 'flex';
-    counter++
-    console.log(counter)
-    body.style.overflow = 'hidden'
-
-
-  }else if(counter == 1){
-    menu.style.display = 'none';
-    counter--
-    console.log(counter)
-    body.style.overflow = 'auto'
+  if (counter == 0) {
+    menu.style.display = "flex";
+    counter++;
+    body.style.overflow = "hidden";
+  } else if (counter == 1) {
+    menu.style.display = "none";
+    counter--;
+    body.style.overflow = "auto";
   }
-
 }

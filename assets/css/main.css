@@ -17,7 +17,10 @@ body {
 p,
 li,
 ul,
-a {
+a,
+h1,
+h2,
+h3 {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   color: #ffffff;
@@ -26,36 +29,41 @@ a {
 }
 
 .container {
-  height: 100%;
+  width: 100%;
   margin-top: 10px;
   overflow-x: hidden;
-}
-
-.header__burger {
-  display: flex;
-  flex-direction: column;
 }
 
 .header {
   display: flex;
   justify-content: center;
   border-bottom: 2px #a1a1a1 solid;
+  margin-bottom: 2rem;
 }
 .header__link {
   text-decoration: none;
   color: #ffffff;
-  font-size: 23px;
-  padding-top: 2rem;
+  font-size: 20px;
+  font-weight: 900;
+}
+.header .header__link-admin {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 200;
+  white-space: nowrap;
 }
 .header__container {
   width: 80%;
+  display: flex;
+  gap: 5vh;
 }
 .header__links__container {
-  width: 40%;
+  padding-top: 3vh;
+  width: 100%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 5vh;
+  align-items: center;
 }
 .header__image {
   height: 110px;
@@ -381,7 +389,7 @@ a {
 .footer__link {
   color: rgba(255, 255, 255, 0.9);
   font-weight: 900;
-  font-size: 23px;
+  font-size: 20px;
 }
 
 @media (max-width: 1650px) {

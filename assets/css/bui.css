@@ -28,6 +28,32 @@
   border-radius: 20px;
 }
 
+.main__header__button-front {
+  width: 35px;
+  height: 35px;
+  border-radius: 50px;
+  border: none;
+  color: #7a7a7a;
+  font-size: 18px;
+}
+
+.main__header__button-front:hover {
+  cursor: pointer;
+}
+
+.main__header__button-back {
+  width: 35px;
+  height: 35px;
+  border-radius: 50px;
+  border: none;
+  color: #7a7a7a;
+  font-size: 18px;
+}
+
+.main__header__button-back:hover {
+  cursor: pointer;
+}
+
 .modal__container {
   display: flex;
   flex-direction: column;
@@ -95,6 +121,7 @@
   gap: 2vh;
   width: 240px;
   justify-content: center;
+  align-items: center;
 }
 .main__header__filter__container {
   display: flex;
@@ -221,4 +248,7 @@
   .main__header__filter {
     padding: 0.3rem 1rem;
   }
+}
+.main__content__image {
+  border-radius: 20px 20px 0px 0;
 }/*# sourceMappingURL=bui.css.map */

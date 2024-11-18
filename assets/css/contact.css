@@ -28,9 +28,10 @@ h3 {
   text-decoration: none;
 }
 
-.header__burger {
-  display: flex;
-  flex-direction: column;
+.container {
+  width: 100%;
+  margin-top: 10px;
+  overflow-x: hidden;
 }
 
 .header {
@@ -42,18 +43,27 @@ h3 {
 .header__link {
   text-decoration: none;
   color: #ffffff;
-  font-size: 23px;
-  padding-top: 2rem;
+  font-size: 20px;
+  font-weight: 900;
+}
+.header .header__link-admin {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 200;
+  white-space: nowrap;
 }
 .header__container {
   width: 80%;
+  display: flex;
+  gap: 5vh;
 }
 .header__links__container {
-  width: 40%;
+  padding-top: 3vh;
+  width: 100%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 5vh;
+  align-items: center;
 }
 .header__image {
   height: 110px;
@@ -108,7 +118,7 @@ h3 {
 .main__container {
   display: flex;
   gap: 5rem;
-  justify-content: center;
+  justify-content: space-around;
 }
 .main .main__form__message {
   display: flex;
@@ -236,7 +246,7 @@ h3 {
 .footer__link {
   color: rgba(255, 255, 255, 0.9);
   font-weight: 900;
-  font-size: 23px;
+  font-size: 20px;
 }
 
 @media (max-width: 1300px) {

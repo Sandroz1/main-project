@@ -5,26 +5,31 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
   .spiner {
     margin-top: 0;
   }
   .arrow-back{
     display: flex;
     align-items: center; 
+    position: absolute;
+    top: 0;
     gap: 0.5vh;
     font-size: 20px;
+
+    
   }
-  &__header{
+  &__header-container{
     display: flex;
-    align-items: center;
+    flex-direction: column;
     margin-bottom: 4vh;
-    width: 80%;
+    width: 100%;
 
   }
   
   &__title{
+
     margin: 0;
-    margin: 0 auto;
   }
   &__card {
     display: flex;
@@ -87,6 +92,9 @@
 }
 
 @media(max-width : 600px){
+  .main__title {
+    margin: 5vh 0 0 0;
+}
   .main{
     width: 100%;
     
@@ -95,6 +103,9 @@
       gap: 2rem;
       justify-content: center;
       margin: 0;
+    }
+    &__header-container{
+      gap: 2vh;
     }
     &__card{
       margin: 0 auto;
@@ -114,6 +125,10 @@
         width: 30vh;
       }
     }
+  }
+  .arrow-back{
+
+    margin: 0 auto;
   }
   .main__card__container{
     display: flex;
