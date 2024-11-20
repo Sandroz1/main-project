@@ -51,19 +51,21 @@ function funcSend() {
 }
 
 const burger = document.querySelector(".burger__image");
-let body = document.querySelector("body");
-burger.addEventListener("click", burgerf);
-let counter = 0;
-function burgerf() {
-  const menu = document.querySelector(".header__burger");
+const menu = document.querySelector(".header__burger");
+const body = document.querySelector("body");
 
-  if (counter == 0) {
+let counter = 0;
+
+function burgerf() {
+  if (counter === 0) {
     menu.style.display = "flex";
     counter++;
-    body.style.overflow = "hidden";
-  } else if (counter == 1) {
+    // body.style.overflow = "hidden";
+  } else {
     menu.style.display = "none";
     counter--;
-    body.style.overflow = "auto";
+    // body.style.overflow = "auto";
   }
 }
+
+burger.addEventListener("click", burgerf);

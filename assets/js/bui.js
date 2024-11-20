@@ -1,4 +1,25 @@
+const burger = document.querySelector(".burger__image");
+const menu = document.querySelector(".header__burger");
+const body = document.querySelector("body");
+
+let counter = 0;
+
+function burgerf() {
+  if (counter === 0) {
+    menu.style.display = "flex";
+    counter++;
+    // body.style.overflow = "hidden";
+  } else {
+    menu.style.display = "none";
+    counter--;
+    // body.style.overflow = "auto";
+  }
+}
+
+burger.addEventListener("click", burgerf);
 document.addEventListener("DOMContentLoaded", function () {
+
+
   let allData = [];
   let previousData = []; // Сохраняем предыдущие данные
   const url = "https://672885dc270bd0b97555ee35.mockapi.io/id";
@@ -6,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const urll = `${url}/${id}`;
 
   function displayCards(data, page) {
+    
     cardsContainer.innerHTML = "";
     const start = (page - 1) * itemsPerPage;
     const end = start + itemsPerPage;
