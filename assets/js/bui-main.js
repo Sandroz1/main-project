@@ -24,9 +24,7 @@ const btn11 = document.getElementById("btn1");
 const btn22 = document.getElementById("btn2");
 const btn33 = document.getElementById("btn3");
 btns = document.querySelectorAll(".main__header__button");
-const btn1 = (document.getElementById("btn1").onclick = bat1);
-const btn2 = (document.getElementById("btn2").onclick = bat2);
-const btn3 = (document.getElementById("btn3").onclick = bat3);
+
 const filterButtons = document.querySelectorAll(".main__header__filter");
 
 pol = [];

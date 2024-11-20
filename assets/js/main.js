@@ -1,9 +1,15 @@
 const burger = document.querySelector(".burger__image");
 const menu = document.querySelector(".header__burger");
 const body = document.querySelector("body");
-
+let users = [];
 let counter = 0;
-
+window.addEventListener("load", () => {
+  if (isAdmin === "true") {
+    adminPanel.style.display = "flex";
+  } else {
+    adminPanel.style.display = "none";
+  }
+});
 function burgerf() {
   if (counter === 0) {
     menu.style.display = "flex";
@@ -25,39 +31,45 @@ logbtn = document.querySelector(".modal__registration__btn");
 adminPanel = document.querySelector(".header__link-admin");
 modalLogin = document.querySelector(".modal__registration");
 modalExit = document.querySelector(".modal__registration__exit");
+const url = "https://673b29ec339a4ce4451ae8c5.mockapi.io/login";
+const isAdmin = localStorage.getItem("admin");
 regbtn.addEventListener("click", () => {
   modalLogin.style.display = "flex";
 });
 modalExit.addEventListener("click", () => {
   modalLogin.style.display = "none";
 });
-mas = [
-  {
-    login: "admin",
-    password: "98076207",
-  },
-  {
-    login: "user",
-    password: "123",
-  },
-];
-function qwe() {
+
+async function fetchUsers() {
+  const response = await fetch(url);
+  const data = await response.json();
+  users = data;
+  qwe(users);
+}
+
+function qwe(mas) {
   const foundUser = mas.find((user) => user.password === regPas.value);
-  mas.find((user) => user.login === regLog.value);
-  if (foundUser) {
+  const foundLogin = mas.find((user) => user.login === regLog.value);
+
+  if (foundUser && foundLogin) {
     if (regLog.value === "admin") {
+      localStorage.setItem("admin", true);
       modalLogin.style.display = "none";
-      adminPanel.style.display = "flex";
+      if (isAdmin) {
+        adminPanel.style.display = "flex";
+      }
     } else {
       alert(`Successful ${regPas.value}`);
       modalLogin.style.display = "none";
+      localStorage.setItem("admin", false);
     }
   } else {
-    alert(`Пользователь не найден`);
+    alert(`Неверный логин или пароль!`);
   }
 }
+
 logbtn.addEventListener("click", () => {
-  qwe();
+  fetchUsers();
 });
 
 const slider = document.querySelector(".main__slider__container");
