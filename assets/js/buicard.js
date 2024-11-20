@@ -18,28 +18,27 @@ function burgerf() {
 
 burger.addEventListener("click", burgerf);
 document.addEventListener("DOMContentLoaded", function () {
-
   fetch("https://672885dc270bd0b97555ee35.mockapi.io/id/1")
-  .then((response) => response.json())
-  .then(({ frame }) => displayCards(frame));
+    .then((response) => response.json())
+    .then(({ frame }) => displayCards(frame));
 
   function displayCards(frame) {
-    console.log(frame)
+    console.log(frame);
     fetch("https://672885dc270bd0b97555ee35.mockapi.io/repos")
       .then((response) => response.json())
 
       .then((data) =>
-        document.getElementById("cards").appendChild(createCard(data[frame-1]))
-
-
+        document
+          .getElementById("cards")
+          .appendChild(createCard(data[frame - 1]))
       );
-      spiner.style.display = "none";
+    spiner.style.display = "none";
   }
 
   const spiner = document.querySelector(".spiner");
   spiner.style.display = "flex";
   function createCard(item) {
-    document.querySelector('.main__title').textContent = item.name;
+    document.querySelector(".main__title").textContent = item.name;
     const card = document.createElement("div");
     card.className = "main__card";
     card.innerHTML = `
@@ -60,6 +59,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
     return card;
   }
-
-
 });

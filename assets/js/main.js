@@ -9,7 +9,6 @@ function burgerf() {
     menu.style.display = "flex";
     counter++;
     // body.style.overflow = "hidden";
-
   } else {
     menu.style.display = "none";
     counter--;
@@ -18,7 +17,6 @@ function burgerf() {
 }
 
 burger.addEventListener("click", burgerf);
-
 
 regLog = document.querySelector(".modal__login");
 regPas = document.querySelector(".modal__password");
@@ -50,7 +48,6 @@ function qwe() {
     if (regLog.value === "admin") {
       modalLogin.style.display = "none";
       adminPanel.style.display = "flex";
-  
     } else {
       alert(`Successful ${regPas.value}`);
       modalLogin.style.display = "none";

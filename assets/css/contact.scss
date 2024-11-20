@@ -44,18 +44,17 @@ h3 {
     font-size: 20px;
     font-weight: 900;
   }
-  .header__link-admin{
+  .header__link-admin {
     text-decoration: none;
     color: #ffffff;
     font-size: 20px;
     font-weight: 200;
     white-space: nowrap;
-  
   }
   &__container {
     width: 80%;
     display: flex;
-    gap:5vh;
+    gap: 5vh;
   }
   &__links__container {
     padding-top: 3vh;
@@ -63,7 +62,6 @@ h3 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
   }
 
   &__image {
@@ -74,17 +72,16 @@ h3 {
 /* БУРГЕР МОЙ */
 .header__burger {
   z-index: 100;
-  display: none; 
+  display: none;
   position: fixed;
   top: 0;
   right: 0;
   width: 300px;
-  height: 100%; 
-  background-color: #333; 
-  overflow-y: auto; 
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5); 
+  height: 100%;
+  background-color: #333;
+  overflow-y: auto;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
 }
-
 
 .header__burger__container {
   display: flex;
@@ -95,25 +92,22 @@ h3 {
   gap: 5vh;
 }
 
-
 .header__burger__link {
-  color: #fff; 
-  text-decoration: none; 
-  font-size: 18px; 
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
   margin: 10px 0;
-  transition: color 0.3s ease; 
+  transition: color 0.3s ease;
 }
-
 
 .header__burger__link:hover {
-  color: #ffcc00; 
+  color: #ffcc00;
 }
-
 
 .header__burger.active {
-  display: block; 
+  display: block;
 }
-.burger__image{
+.burger__image {
   display: none;
 }
 // ....КОНЕЦ БУРГЕРА....
@@ -129,7 +123,6 @@ h3 {
   &__container {
     display: flex;
     gap: 5rem;
-    
 
     justify-content: space-around;
   }
@@ -268,22 +261,21 @@ h3 {
   }
 }
 @media (max-width: 1300px) {
-    .main{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        &__container{
-            justify-content: center;
-            align-items: center;
-        }
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__container {
+      justify-content: center;
+      align-items: center;
     }
+  }
   .main__container {
     display: flex;
     flex-direction: column;
   }
   .main__card {
-
     width: 80%;
     text-align: center;
   }
@@ -317,14 +309,13 @@ h3 {
   }
 }
 @media (max-width: 600px) {
-    .main__button-create {
-        max-width: 35vh;
-        margin: 0 auto;
-    }
-    .main__card{
-        padding: 2vh;
-    }
-    .main__form{
-
-    }
+  .main__button-create {
+    max-width: 35vh;
+    margin: 0 auto;
+  }
+  .main__card {
+    padding: 2vh;
+  }
+  .main__form {
+  }
 }

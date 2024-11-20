@@ -1,5 +1,3 @@
-
-
 .main__content__card__none {
   padding-top: 3rem;
   text-align: center;
@@ -29,7 +27,7 @@
     border-radius: 20px;
   }
 }
-.main__header__button-front{
+.main__header__button-front {
   width: 35px;
   height: 35px;
   border-radius: 50px;
@@ -37,10 +35,10 @@
   color: #7a7a7a;
   font-size: 18px;
 }
-.main__header__button-front:hover{
+.main__header__button-front:hover {
   cursor: pointer;
 }
-.main__header__button-back{
+.main__header__button-back {
   width: 35px;
   height: 35px;
   border-radius: 50px;
@@ -48,8 +46,8 @@
   color: #7a7a7a;
   font-size: 18px;
 }
-.main__header__button-back:hover{
-cursor: pointer;
+.main__header__button-back:hover {
+  cursor: pointer;
 }
 .modal__container {
   display: flex;
@@ -60,13 +58,11 @@ cursor: pointer;
 }
 #map1 {
   #map1 {
-
     border-radius: 20px;
   }
   border-radius: 20px;
 }
 .main {
-
   padding-bottom: 100px;
 
   width: 80%;
@@ -117,7 +113,7 @@ cursor: pointer;
       display: flex;
       gap: 2vh;
       width: 240px;
-      justify-content:center ;
+      justify-content: center;
       align-items: center;
     }
     &__filter__container {
@@ -149,7 +145,6 @@ cursor: pointer;
     }
   }
 }
-
 
 // ...............................
 .main__content {
@@ -191,7 +186,6 @@ cursor: pointer;
   border-radius: 10px;
 }
 .main__content__image {
-
   color: #fff;
   text-align: center;
   display: flex;
@@ -221,29 +215,27 @@ cursor: pointer;
 .main__content__card:hover {
   cursor: pointer;
 }
-.main__content__container{
+.main__content__container {
   display: flex;
   align-items: center;
   // position: relative;
   position: relative;
 }
-.main__content__card__title{
-
+.main__content__card__title {
   width: 100%;
   text-align: start;
 }
-.btn__card-delete{
+.btn__card-delete {
   position: absolute;
   right: 0;
   margin-right: 10px;
   height: 3vh;
-  
 }
 
 // ..................................
 @media (max-width: 600px) {
-  .modal__text{
-      width: 40vh;
+  .modal__text {
+    width: 40vh;
   }
   #map1 {
     width: 44vh;
@@ -271,29 +263,23 @@ cursor: pointer;
   }
 }
 // -------------------------------------------
-.card__add{
-  display:flex ;
+.card__add {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 3vh;
-  &__image{
-     display: flex;
-     flex-direction: column;
-     align-items: center;
-     justify-content: center;
-     flex-wrap: wrap;
-
+  &__image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
   }
-
 }
 .card__add__image {
-
-
 }
 .card__add__image::-webkit-file-upload-button {
-
-
 }
 .card__add__image::before {
   text-align: center;
@@ -309,10 +295,10 @@ cursor: pointer;
   font-weight: 700;
   font-size: 10pt;
 }
-#imagePreview{
+#imagePreview {
   width: 400px;
   max-height: 400px;
 }
-.main__content__image{
+.main__content__image {
   border-radius: 20px 20px 0px 0;
 }

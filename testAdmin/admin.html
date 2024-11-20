@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="./css/buimain.css">
-    <link rel="stylesheet" href="./css/admin.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link rel="stylesheet" href="./css/buimain.css" />
+    <link rel="stylesheet" href="./css/admin.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-    <!-- <header class="header">
+      <!-- <header class="header">
         <div class="header__container">
             <a href="../index.html" class="header__image-link">
                 <img src="./image/MAINPNG.svg    " alt="logo" class="header__image">
@@ -30,65 +30,91 @@
         </div>
     </header> -->
 
-        <header class="header">
-            <div class="header__container">
-                <a href="../bui.html" class="header__link">
-                    <img src="../assets/image/arrow-back.svg" alt="" style="width: 32px;">
-                    Назад
-                   </a>
-            </div>
-
-        </header>
-
-        <div class="main">
-            <h1 class="main__title">
-                АДМИН ПАНЕЛЬ
-            </h1>
-            <div class="main__container">
-                <div class="modal">
-                    <div class="modal__container">
-                        <p class="modal__text"></p>
-                        <iframe id="map1" src="" width="500px" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map-second"></iframe>
-                    </div>
-                </div>
-                <div class="main__header">
-                    <div class="main__header__input">
-                        <input id="input" class="main__header__search" autocomplete="off" type="text">
-                        <img src="./image/search.svg" alt="error" class="main__header__icon">
-                    </div>
-
-                    <div class="main__header__slide">
-
-                    </div>
-                    <div class="main__header__filter__container">
-                        <button class="main__header__filter" data-filter="all">Все</button>
-                        <button class="main__header__filter" data-filter="category 1">Большая посещаемость</button>
-                        <button class="main__header__filter" data-filter="category 2">Малая посещаемость</button>
-
-
-                    </div>
-                </div>
-
-                    <div class="main__content">
-                        <div id="cards" class="main__content__cards">
-  
-                              <div class="spiner"></div>
-
-                        </div>
-
-                    </div>
-                    <div class="card__add">
-                        <h2>Добавить карточку</h2>
-                        <input type="text" class="card__add__text" id="cardText">
-                    
-                        <input class="card__add__image" type="file" id="imageInput" accept="image/*">
-                        <button type="submit" id="uploadButton">Загрузить изображение</button>
-                        <div id="imagePreview"></div>
-                        <button type="button" id="submitCard">Отправить карточку</button>
-                    </div>
-            </div>
+      <header class="header">
+        <div class="header__container">
+          <a href="../bui.html" class="header__link">
+            <img
+              src="../assets/image/arrow-back.svg"
+              alt=""
+              style="width: 32px"
+            />
+            Назад
+          </a>
         </div>
+      </header>
+
+      <div class="main">
+        <h1 class="main__title">АДМИН ПАНЕЛЬ</h1>
+        <div class="main__container">
+          <div class="modal">
+            <div class="modal__container">
+              <p class="modal__text"></p>
+              <iframe
+                id="map1"
+                src=""
+                width="500px"
+                height="450"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                class="map-second"
+              ></iframe>
+            </div>
+          </div>
+          <div class="main__header">
+            <div class="main__header__input">
+              <input
+                id="input"
+                class="main__header__search"
+                autocomplete="off"
+                type="text"
+              />
+              <img
+                src="./image/search.svg"
+                alt="error"
+                class="main__header__icon"
+              />
+            </div>
+
+            <div class="main__header__slide"></div>
+            <div class="main__header__filter__container">
+              <button class="main__header__filter" data-filter="all">
+                Все
+              </button>
+              <button class="main__header__filter" data-filter="category 1">
+                Большая посещаемость
+              </button>
+              <button class="main__header__filter" data-filter="category 2">
+                Малая посещаемость
+              </button>
+            </div>
+          </div>
+
+          <div class="main__content">
+            <div id="cards" class="main__content__cards">
+              <div class="spiner"></div>
+            </div>
+          </div>
+          <div class="card__add">
+            <h2>Добавить карточку</h2>
+            <input type="text" class="card__add__text" id="cardText" />
+
+            <input
+              class="card__add__image"
+              type="file"
+              id="imageInput"
+              accept="image/*"
+            />
+            <button type="submit" id="uploadButton">
+              Загрузить изображение
+            </button>
+            <div id="imagePreview"></div>
+            <button type="button" id="submitCard">Отправить карточку</button>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="./admin.js"></script>
-</body>
+  </body>
 </html>

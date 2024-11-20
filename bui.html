@@ -1,98 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="./assets/css/bui.css">
-    <link rel="stylesheet" href="./assets/css/buimain.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link rel="stylesheet" href="./assets/css/bui.css" />
+    <link rel="stylesheet" href="./assets/css/buimain.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <div class="container">
-        <header class="header">
-            <div class="header__container">
-                <a href="./index.html" class="header__image-link">
-                    <img src="./assets/image/MAINPNG.svg    " alt="logo" class="header__image">
-                </a>
-                <div class="header__links__container">
-                    
-                    <a  href="#" class="header__link">
-                        ДОСТОПРЕМИЧАТЕЛЬНОСТИ
-                    </a>
-                    <a class="header__link-admin" href="./testAdmin/admin.html">
-                        admin
-                    </a>
-                    <img class="burger__image" src="./assets/image/burg 1.svg" alt="">
-                </div>
-                
-                <div class="header__burger">
+      <header class="header">
+        <div class="header__container">
+          <a href="./index.html" class="header__image-link">
+            <img
+              src="./assets/image/MAINPNG.svg    "
+              alt="logo"
+              class="header__image"
+            />
+          </a>
+          <div class="header__links__container">
+            <a href="#" class="header__link"> ДОСТОПРЕМИЧАТЕЛЬНОСТИ </a>
+            <a class="header__link-admin" href="./testAdmin/admin.html">
+              admin
+            </a>
+            <img class="burger__image" src="./assets/image/burg 1.svg" alt="" />
+          </div>
 
-                    <div class="header__burger__container">
-                        <a  href="./bui.html" class="header__burger__link">
-                            Достопремичательности
-                        </a>
-                        <a  href="./contact.html" class="header__burger__link">
-                            Контакты
-                        </a>
-                        <a  href="#" class="header__burger__link">
-                            "Закрыто"
-                        </a>
-                    </div>
-
-
-                </div>
-    
-
-            </div>
-        </header>
-        <div class="main">
-            <h1 class="main__title">
+          <div class="header__burger">
+            <div class="header__burger__container">
+              <a href="./bui.html" class="header__burger__link">
                 Достопремичательности
-            </h1>
-            <div class="main__container">
-                <div class="modal">
-                    <div class="modal__container">
-                        <p class="modal__text"></p>
-                        <iframe id="map1" src="" width="500px" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map-second"></iframe>
-                    </div>
-                </div>
-                <div class="main__header">
-                    <div class="main__header__input">
-                        <input id="input" class="main__header__search" autocomplete="off" type="text">
-                        <img src="./assets/image/search.svg" alt="error" class="main__header__icon">
-                    </div>
-
-                    <div class="main__header__slide">
-
-                    </div>
-                    <div class="main__header__filter__container">
-                        <button class="main__header__filter" data-filter="all">Все</button>
-                        <button class="main__header__filter" data-filter="category 1">Большая посещаемость</button>
-                        <button class="main__header__filter" data-filter="category 2">Малая посещаемость</button>
-
-
-                    </div>
-                </div>
-
-                    <div class="main__content">
-                        <div id="cards" class="main__content__cards">
-  
-                              <div class="spiner"></div>
-
-                        </div>
-                    </div>
+              </a>
+              <a href="./contact.html" class="header__burger__link">
+                Контакты
+              </a>
+              <a href="#" class="header__burger__link"> "Закрыто" </a>
             </div>
+          </div>
         </div>
-        <footer class="footer">
-            <div class="footer__container">
-  
-                    <a href="./contact.html" class="footer__link">
-                        КОНТАКТЫ
-                    </a>
+      </header>
+      <div class="main">
+        <h1 class="main__title">Достопремичательности</h1>
+        <div class="main__container">
+          <div class="modal">
+            <div class="modal__container">
+              <p class="modal__text"></p>
+              <iframe
+                id="map1"
+                src=""
+                width="500px"
+                height="450"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                class="map-second"
+              ></iframe>
+            </div>
+          </div>
+          <div class="main__header">
+            <div class="main__header__input">
+              <input
+                id="input"
+                class="main__header__search"
+                autocomplete="off"
+                type="text"
+              />
+              <img
+                src="./assets/image/search.svg"
+                alt="error"
+                class="main__header__icon"
+              />
+            </div>
 
-        </footer>
+            <div class="main__header__slide"></div>
+            <div class="main__header__filter__container">
+              <button class="main__header__filter" data-filter="all">
+                Все
+              </button>
+              <button class="main__header__filter" data-filter="category 1">
+                Большая посещаемость
+              </button>
+              <button class="main__header__filter" data-filter="category 2">
+                Малая посещаемость
+              </button>
+            </div>
+          </div>
+
+          <div class="main__content">
+            <div id="cards" class="main__content__cards">
+              <div class="spiner"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        <div class="footer__container">
+          <a href="./contact.html" class="footer__link"> КОНТАКТЫ </a>
+        </div>
+      </footer>
+
+      <script src="./assets/js/bui.js"></script>
     </div>
-    <script src="./assets/js/bui.js"></script>
-</body>
+  </body>
 </html>

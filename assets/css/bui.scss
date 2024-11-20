@@ -27,7 +27,7 @@
     border-radius: 20px;
   }
 }
-.main__header__button-front{
+.main__header__button-front {
   width: 35px;
   height: 35px;
   border-radius: 50px;
@@ -35,10 +35,10 @@
   color: #7a7a7a;
   font-size: 18px;
 }
-.main__header__button-front:hover{
+.main__header__button-front:hover {
   cursor: pointer;
 }
-.main__header__button-back{
+.main__header__button-back {
   width: 35px;
   height: 35px;
   border-radius: 50px;
@@ -46,8 +46,8 @@
   color: #7a7a7a;
   font-size: 18px;
 }
-.main__header__button-back:hover{
-cursor: pointer;
+.main__header__button-back:hover {
+  cursor: pointer;
 }
 .modal__container {
   display: flex;
@@ -58,13 +58,11 @@ cursor: pointer;
 }
 #map1 {
   #map1 {
-
     border-radius: 20px;
   }
   border-radius: 20px;
 }
 .main {
-
   width: 80%;
   margin: 0 auto;
   transition: 1s;
@@ -113,7 +111,7 @@ cursor: pointer;
       display: flex;
       gap: 2vh;
       width: 240px;
-      justify-content:center ;
+      justify-content: center;
       align-items: center;
     }
     &__filter__container {
@@ -218,9 +216,8 @@ cursor: pointer;
 
 // ..................................
 @media (max-width: 600px) {
-
-  .modal__text{
-      width: 40vh;
+  .modal__text {
+    width: 40vh;
   }
   #map1 {
     width: 44vh;
@@ -247,6 +244,6 @@ cursor: pointer;
     }
   }
 }
-.main__content__image{
+.main__content__image {
   border-radius: 20px 20px 0px 0;
 }

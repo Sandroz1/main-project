@@ -75,17 +75,16 @@ h3 {
 /* БУРГЕР МОЙ */
 .header__burger {
   z-index: 100;
-  display: none; 
+  display: none;
   position: fixed;
   top: 0;
   right: 0;
   width: 300px;
-  height: 100%; 
-  background-color: #333; 
-  overflow-y: auto; 
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5); 
+  height: 100%;
+  background-color: #333;
+  overflow-y: auto;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.5);
 }
-
 
 .header__burger__container {
   display: flex;
@@ -96,25 +95,22 @@ h3 {
   gap: 5vh;
 }
 
-
 .header__burger__link {
-  color: #fff; 
-  text-decoration: none; 
-  font-size: 18px; 
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
   margin: 10px 0;
-  transition: color 0.3s ease; 
+  transition: color 0.3s ease;
 }
-
 
 .header__burger__link:hover {
-  color: #ffcc00; 
+  color: #ffcc00;
 }
-
 
 .header__burger.active {
-  display: block; 
+  display: block;
 }
-.burger__image{
+.burger__image {
   display: none;
 }
 
@@ -189,11 +185,10 @@ h3 {
   text-align: center;
   transition: 0.5s;
 }
-.modal__registration__btn:hover{
+.modal__registration__btn:hover {
   cursor: pointer;
   scale: 1.2;
 }
-
 
 .modal__registration__text {
   font-size: 15px;
@@ -224,7 +219,7 @@ h3 {
     justify-content: left;
     gap: 12rem;
     margin-bottom: 5rem;
-    align-items: center;
+    // align-items: center;
   }
   &__slider {
     background-color: #0009;
@@ -519,6 +514,7 @@ h3 {
 @media (max-width: 1650px) {
   .main__container {
     flex-direction: column;
+    align-items: center;
   }
   .main__list__container {
     justify-content: center;

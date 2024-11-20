@@ -18,8 +18,6 @@ function burgerf() {
 
 burger.addEventListener("click", burgerf);
 document.addEventListener("DOMContentLoaded", function () {
-
-
   let allData = [];
   let previousData = []; // Сохраняем предыдущие данные
   const url = "https://672885dc270bd0b97555ee35.mockapi.io/id";
@@ -27,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const urll = `${url}/${id}`;
 
   function displayCards(data, page) {
-    
     cardsContainer.innerHTML = "";
     const start = (page - 1) * itemsPerPage;
     const end = start + itemsPerPage;
