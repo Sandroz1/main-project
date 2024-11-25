@@ -18,8 +18,9 @@ function burgerf() {
 
 burger.addEventListener("click", burgerf);
 document.addEventListener("DOMContentLoaded", function () {
-  let allData = [];
-  let previousData = []; // Сохраняем предыдущие данные
+
+
+
   const url = "https://672885dc270bd0b97555ee35.mockapi.io/id";
   const id = 1;
   const urll = `${url}/${id}`;
@@ -50,14 +51,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
           if (!response.ok) {
             throw new Error(
-              "Network response was not ok " + response.statusText
+              response.statusText
             );
           }
-
           const data = await response.json();
           console.log("Success:", data);
         } catch (error) {
-          console.error("There was a problem with the fetch operation:", error);
+          console.error(error);
         }
         // Здесь можно добавить код для открытия модального окна
 
@@ -182,6 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
     displayCards(filteredData, currentPage);
     updatePagination(filteredData);
   });
+
 
   // Инициализация
   const spiner = document.querySelector(".spiner");

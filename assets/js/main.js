@@ -57,11 +57,15 @@ function qwe(mas) {
       modalLogin.style.display = "none";
       if (isAdmin) {
         adminPanel.style.display = "flex";
+      }else{
+        adminPanel.style.display = "none";
       }
+
     } else {
       alert(`Successful ${regPas.value}`);
       modalLogin.style.display = "none";
       localStorage.setItem("admin", false);
+      adminPanel.style.display = "none";
     }
   } else {
     alert(`Неверный логин или пароль!`);

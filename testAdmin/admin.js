@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function () {
       let newData = {
         frame: item.id,
       };
-
       card.addEventListener("click", async () => {
         try {
           const response = await fetch(urll, {
@@ -52,19 +51,13 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             body: JSON.stringify(newData),
           });
-
           if (!response.ok) {
-            throw new Error(
-              "Network response was not ok " + response.statusText
-            );
+            throw new Error(response.statusText);
           }
-
           const data = await response.json();
-          console.log("Success:", data);
         } catch (error) {
-          console.error("There was a problem with the fetch operation:", error);
+          console.error(error);
         }
-
         // для модалки
         // modal.style.display = "flex";
         // document.querySelector(".modal__text").textContent = item.discriprion;
@@ -83,7 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Удаление объекта из allData
         allData = allData.filter((dataItem) => dataItem.id !== item.id);
-
         // Обновление отображения карточек и пагинации
         displayCards(allData, currentPage);
         updatePagination(allData);
