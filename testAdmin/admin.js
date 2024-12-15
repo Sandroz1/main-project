@@ -201,6 +201,7 @@ document.getElementById("submitCard").addEventListener("click", function () {
       img1: "NoImage",
       img2: "NoImage",
       img3: "NoImage",
+      popularity:1,
     };
 
     // Отправляем данные на сервер

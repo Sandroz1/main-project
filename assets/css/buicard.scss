@@ -1,3 +1,159 @@
+// Общие стили для отзывов
+.reviews {
+
+  margin: 20px 0;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  max-width: 50vh;
+  width: 100%;
+  display: none;
+
+
+  h2 {
+    font-size: 28px; 
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center; 
+  }
+}
+
+
+#review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; 
+
+  label {
+    font-size: 18px; 
+    color: #333;
+    font-weight: bold; 
+  }
+
+  input,
+  textarea {
+    padding: 12px; 
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    width: 100%; 
+    box-sizing: border-box; 
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 120px; 
+  }
+
+  button {
+    background-color: #00c8ff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 24px; 
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    align-self: center;
+
+    &:hover {
+      background-color: #00a2cc;
+    }
+  }
+}
+
+
+#reviews-list {
+  margin-top: 30px; 
+  overflow-x: auto;
+  max-height: 30vh;
+  
+  .review {
+    padding: 15px; 
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+
+    p {
+      margin: 0;
+      font-size: 16px;
+      color: #555;
+      word-wrap: break-word;
+      line-height: 1.5; 
+      strong {
+        color: #333;
+        font-size: 18px;
+      }
+    }
+
+
+    .delete-review {
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 16px; 
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+      align-self: flex-end;
+
+      &:hover {
+        background-color: #e60000;
+      }
+    }
+  }
+}
+
+/////////ОТЗЫВЫ////////////
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: 1s;
+  gap: 5vh;
+  &__image {
+    width: 60vh;
+    border-radius: 10%;
+  }
+  &__btn {
+    font-size: 18px;
+    font-weight: 900;
+    width: 35px;
+    height: 35px;
+    border-radius: 50px;
+    border: none;
+    color: #7a7a7a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    transition: 1s;
+  }
+  &__btn:hover {
+    background-color: rgb(0, 200, 255);
+    color: #ffffff;
+  }
+  &__btn:hover {
+    cursor: pointer;
+  }
+}
+
 .main {
   min-height: 58vh;
   height: 100%;
@@ -6,16 +162,38 @@
   align-items: center;
   flex-direction: column;
   position: relative;
+  &__container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+  .main__card__container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 3vh;
+  }
   .spiner {
     margin-top: 0;
+    z-index: 1000;
   }
+
   .arrow-back {
     display: flex;
-    align-items: center;
     position: absolute;
+    align-items: center;
+    left: 0;
     top: 0;
     gap: 0.5vh;
     font-size: 20px;
+    transition: 0.5s;
+  }
+  .arrow-back:hover {
+    opacity: 0.5;
+  }
+  .arrow-back-image {
+    width: 30px;
   }
   &__header-container {
     display: flex;
@@ -25,7 +203,10 @@
   }
 
   &__title {
-    margin: 0;
+    display: flex;
+    margin: 0 auto;
+  }
+  .main__content__cards {
   }
   &__card {
     display: flex;
@@ -39,6 +220,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 5vh;
+      width: 100%;
     }
     &__image {
       color: #fff;
@@ -48,21 +230,23 @@
       font-size: 20px;
       margin: 0 auto;
       align-items: center;
-    }
-    &__image {
+      width: 350px;
       border-radius: 10px;
+      transition: 0.5s;
     }
-    &__container {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
+
+    &__image:hover {
+      cursor: pointer;
+      opacity: 0.8;
+      scale: 1.05;
     }
+
     &__text {
       display: flex;
       flex-direction: column;
       text-align: center;
       border-radius: 20px;
-      width: 50vh;
+      max-width: 50vh;
       gap: 4vh;
       background-color: rgba(255, 255, 255, 0.6);
       padding: 5vh;

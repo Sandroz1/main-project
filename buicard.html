@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="./assets/css/buimain.css" />
     <link rel="stylesheet" href="./assets/css/buicard.css" />
+    <link rel="stylesheet" href="./assets/css/buimain.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Достопримечательность</title>
   </head>
   <body>
     <div class="container">
@@ -13,18 +13,13 @@
         <div class="header__container">
           <a href="./index.html" class="header__image-link">
             <img
-              src="./assets/image/MAINPNG.svg    "
+              src="./assets/image/MAINPNG.svg"
               alt="logo"
               class="header__image"
             />
           </a>
           <div class="header__links__container">
-            <a href="./bui.html" class="header__link">
-              ДОСТОПРЕМИЧАТЕЛЬНОСТИ
-            </a>
-            <!-- <a class="header__link-admin" href="./testAdmin/admin.html">
-              admin
-            </a> -->
+            <a href="#" class="header__link"> ДОСТОПРЕМИЧАТЕЛЬНОСТИ </a>
             <img class="burger__image" src="./assets/image/burg 1.svg" alt="" />
           </div>
 
@@ -41,31 +36,43 @@
           </div>
         </div>
       </header>
-
       <div class="main">
-        <div class="main__header-container">
-          <a href="./bui.html" class="arrow-back"
-            ><img
-              src="./assets/image/arrow-back.svg"
-              alt=""
-              style="width: 32px"
-            />
-            Назад
-          </a>
-          <h1 class="main__title"></h1>
-        </div>
-
-        <div id="cards" class="main__container">
+        <a href="./bui.html" class="arrow-back">
+          <img
+            src="./assets/image/arrow-back.svg"
+            alt="arrow-back"
+            class="arrow-back-image"
+          />
+          Назад
+        </a>
+        <div class="main__container">
           <div class="spiner"></div>
         </div>
-      </div>
+        <div class="reviews">
+          <h2>Отзывы</h2>
+          <form id="review-form">
+            <div class="form-name">
+              <label for="name">Имя:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
 
+            <div class="form-desc">
+              <label for="text">Текст отзыва:</label>
+              <textarea id="text" name="text" required></textarea>
+            </div>
+
+            <button type="submit">Оставить отзыв</button>
+          </form>
+          <div id="reviews-list"></div>
+        </div>
+      </div>
       <footer class="footer">
         <div class="footer__container">
           <a href="./contact.html" class="footer__link"> КОНТАКТЫ </a>
         </div>
       </footer>
+
+      <script src="./assets/js/buicard.js"></script>
     </div>
-    <script src="./assets/js/buicard.js"></script>
   </body>
 </html>

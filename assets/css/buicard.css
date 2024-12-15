@@ -1,3 +1,141 @@
+.reviews {
+  margin: 20px 0;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 50vh;
+  width: 100%;
+  display: none;
+}
+.reviews h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+#review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+#review-form label {
+  font-size: 18px;
+  color: #333;
+  font-weight: bold;
+}
+#review-form input,
+#review-form textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+#review-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+#review-form button {
+  background-color: #00c8ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+  align-self: center;
+}
+#review-form button:hover {
+  background-color: #00a2cc;
+}
+
+#reviews-list {
+  margin-top: 30px;
+  overflow-x: auto;
+  max-height: 30vh;
+}
+#reviews-list .review {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#reviews-list .review p {
+  margin: 0;
+  font-size: 16px;
+  color: #555;
+  word-wrap: break-word;
+  line-height: 1.5;
+}
+#reviews-list .review p strong {
+  color: #333;
+  font-size: 18px;
+}
+#reviews-list .review .delete-review {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  align-self: flex-end;
+}
+#reviews-list .review .delete-review:hover {
+  background-color: #e60000;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: 1s;
+  gap: 5vh;
+}
+.modal__image {
+  width: 60vh;
+  border-radius: 10%;
+}
+.modal__btn {
+  font-size: 18px;
+  font-weight: 900;
+  width: 35px;
+  height: 35px;
+  border-radius: 50px;
+  border: none;
+  color: #7a7a7a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  transition: 1s;
+}
+.modal__btn:hover {
+  background-color: rgb(0, 200, 255);
+  color: #ffffff;
+}
+.modal__btn:hover {
+  cursor: pointer;
+}
+
 .main {
   min-height: 58vh;
   height: 100%;
@@ -7,16 +145,37 @@
   flex-direction: column;
   position: relative;
 }
+.main__container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.main .main__card__container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 3vh;
+}
 .main .spiner {
   margin-top: 0;
+  z-index: 1000;
 }
 .main .arrow-back {
   display: flex;
-  align-items: center;
   position: absolute;
+  align-items: center;
+  left: 0;
   top: 0;
   gap: 0.5vh;
   font-size: 20px;
+  transition: 0.5s;
+}
+.main .arrow-back:hover {
+  opacity: 0.5;
+}
+.main .arrow-back-image {
+  width: 30px;
 }
 .main__header-container {
   display: flex;
@@ -25,7 +184,8 @@
   width: 100%;
 }
 .main__title {
-  margin: 0;
+  display: flex;
+  margin: 0 auto;
 }
 .main__card {
   display: flex;
@@ -40,6 +200,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 5vh;
+  width: 100%;
 }
 .main__card__image {
   color: #fff;
@@ -49,21 +210,21 @@
   font-size: 20px;
   margin: 0 auto;
   align-items: center;
-}
-.main__card__image {
+  width: 350px;
   border-radius: 10px;
+  transition: 0.5s;
 }
-.main__card__container {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+.main__card__image:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  scale: 1.05;
 }
 .main__card__text {
   display: flex;
   flex-direction: column;
   text-align: center;
   border-radius: 20px;
-  width: 50vh;
+  max-width: 50vh;
   gap: 4vh;
   background-color: rgba(255, 255, 255, 0.6);
   padding: 5vh;
