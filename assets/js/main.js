@@ -76,41 +76,7 @@ logbtn.addEventListener("click", () => {
   fetchUsers();
 });
 
-const slider = document.querySelector(".main__slider__container");
-const sliderLine = document.querySelector(".main__slider__line");
-const sliderImage = document.querySelector(".main__slider__image");
-const sliderImageAll = document.querySelectorAll(".main__slider__image");
-const sliderPrev = document.querySelector(".main__slider__btn__prev");
-const sliderAfter = document.querySelector(".main__slider__btn__after");
 
-let sliderCount = 0;
-
-let sliderWidthAll = sliderImage.offsetWidth;
-sliderAfter.addEventListener("click", nextslide);
-sliderPrev.addEventListener("click", afterslide);
-
-function nextslide() {
-  sliderCount++;
-  if (sliderCount >= sliderImageAll.length) {
-    sliderCount = 0;
-  }
-  rollSlider();
-}
-
-function afterslide() {
-  sliderCount -= 1;
-
-  if (sliderCount < 0) {
-    sliderCount = sliderImageAll.length - 1;
-  }
-  rollSlider();
-}
-
-function rollSlider() {
-  sliderLine.style.transform = `translateX(${
-    -sliderCount * sliderWidthAll
-  }px )`;
-}
 
 const mapbutton = document.querySelector(".main__content__button");
 const mapfirst = document.querySelector(".map-first");
@@ -160,3 +126,53 @@ function cardAdd3() {
   hide3.style.display = "flex";
   hide.style.display = "flex";
 }
+
+
+class Slider {
+  constructor(sliderContainer, sliderLine, sliderImages, prevButton, nextButton) {
+    this.sliderContainer = document.querySelector(sliderContainer);
+    this.sliderLine = document.querySelector(sliderLine);
+    this.sliderImages = document.querySelectorAll(sliderImages);
+    this.prevButton = document.querySelector(prevButton);
+    this.nextButton = document.querySelector(nextButton);
+    this.sliderCount = 0;
+    this.sliderWidth = this.sliderImages[0].offsetWidth;
+
+    this.init();
+  }
+
+  init() {
+    this.prevButton.addEventListener("click", () => this.prevSlide());
+    this.nextButton.addEventListener("click", () => this.nextSlide());
+    this.updateSlider();
+  }
+
+  nextSlide() {
+    this.sliderCount++;
+    if (this.sliderCount >= this.sliderImages.length) {
+      this.sliderCount = 0;
+    }
+    this.updateSlider();
+  }
+
+  prevSlide() {
+    this.sliderCount--;
+    if (this.sliderCount < 0) {
+      this.sliderCount = this.sliderImages.length - 1;
+    }
+    this.updateSlider();
+  }
+
+  updateSlider() {
+    this.sliderLine.style.transform = `translateX(${-this.sliderCount * this.sliderWidth}px)`;
+  }
+}
+
+// Использование класса Slider
+const slider = new Slider(
+  ".main__slider__container",
+  ".main__slider__line",
+  ".main__slider__image",
+  ".main__slider__btn__prev",
+  ".main__slider__btn__after"
+);

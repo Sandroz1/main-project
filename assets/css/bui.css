@@ -146,6 +146,10 @@
   font-size: 18px;
   display: flex;
   padding: 0.3vh 1rem;
+  max-width: 151px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 .main__header .sort-button:hover {
   cursor: pointer;

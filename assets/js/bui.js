@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentFilter = "all";
   let currentSearchTerm = "";
   let isSortedByPopularityAsc = null; // переменная для отслеживания состояния сортировки
+  let isSortedByNameAsc = null; // переменная для отслеживания состояния сортировки по алфавиту
   let searchTimeout;
 
   function displayCards(data) {
@@ -45,9 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return card;
   }
 
-
   function updatePagination(totalPages) {
-    debugger
     paginationContainer.innerHTML = "";
     function renderButtons(block) {
       paginationContainer.innerHTML = "";
@@ -108,6 +107,10 @@ document.addEventListener("DOMContentLoaded", function () {
       const sortOrder = isSortedByPopularityAsc ? "asc" : "desc";
       pagURL += `&sortBy=popularity&order=${sortOrder}`;
     }
+    if (isSortedByNameAsc !== null) {
+      const sortOrder = isSortedByNameAsc ? "asc" : "desc";
+      pagURL += `&sortBy=name&order=${sortOrder}`;
+    }
 
     fetch(pagURL)
       .then((response) => response.json())
@@ -127,43 +130,48 @@ document.addEventListener("DOMContentLoaded", function () {
     currentFilter = category;
     spiner.style.display = "flex";
     spinerB.style.display = "flex";
-    if (category === "all") {
-      fetch("https://672885dc270bd0b97555ee35.mockapi.io/repos")
-        .then((response) => response.json())
-        .then((data) => {
-          allData = data;
-          filteredData = allData;
-          const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-          updatePagination(totalPages);
-          loadPageData(currentPage);
-          spiner.style.display = "none";
-          spinerB.style.display = "none";
-        })
-        .catch((error) => {
-          console.error(error);
-          spiner.style.display = "none";
-          spinerB.style.display = "none";
-        });
-    } else {
-      fetch(
-        `https://672885dc270bd0b97555ee35.mockapi.io/repos?category=${category}`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          allData = data;
-          filteredData = allData;
-          const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-          updatePagination(totalPages);
-          loadPageData(currentPage);
-          spiner.style.display = "none";
-          spinerB.style.display = "none";
-        })
-        .catch((error) => {
-          console.error(error);
-          spiner.style.display = "none";
-          spinerB.style.display = "none";
-        });
+
+    let filterUrl = `https://672885dc270bd0b97555ee35.mockapi.io/repos`;
+
+    if (category !== "all") {
+      filterUrl += `?category=${category}`;
     }
+
+    if (currentSearchTerm) {
+      filterUrl += `${
+        filterUrl.includes("?") ? "&" : "?"
+      }name=${currentSearchTerm}`;
+    }
+
+    if (isSortedByPopularityAsc !== null) {
+      const sortOrder = isSortedByPopularityAsc ? "asc" : "desc";
+      filterUrl += `${
+        filterUrl.includes("?") ? "&" : "?"
+      }sortBy=popularity&order=${sortOrder}`;
+    }
+    if (isSortedByNameAsc !== null) {
+      const sortOrder = isSortedByNameAsc ? "asc" : "desc";
+      filterUrl += `${
+        filterUrl.includes("?") ? "&" : "?"
+      }sortBy=name&order=${sortOrder}`;
+    }
+
+    fetch(filterUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        allData = data;
+        filteredData = allData;
+        const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+        updatePagination(totalPages);
+        loadPageData(currentPage);
+        spiner.style.display = "none";
+        spinerB.style.display = "none";
+      })
+      .catch((error) => {
+        console.error(error);
+        spiner.style.display = "none";
+        spinerB.style.display = "none";
+      });
   }
 
   // Смена цвета по нажатию на кнопку
@@ -186,37 +194,118 @@ document.addEventListener("DOMContentLoaded", function () {
     searchTimeout = setTimeout(() => {
       currentSearchTerm = searchInput.value.toLowerCase();
 
-      // Фильтруем данные на стороне клиента
-      filteredData = allData.filter((item) =>
-        item.name.toLowerCase().includes(currentSearchTerm)
-      );
+      let searchUrl = `https://672885dc270bd0b97555ee35.mockapi.io/repos`;
 
-      const totalPages = Math.ceil(filteredData.length / itemsPerPage);
-      updatePagination(totalPages);
-      loadPageData(currentPage);
-      spiner.style.display = "none";
-      spinerB.style.display = "none";
+      if (currentSearchTerm) {
+        searchUrl += `?name=${currentSearchTerm}`;
+      }
+
+      if (currentFilter !== "all") {
+        searchUrl += `${
+          searchUrl.includes("?") ? "&" : "?"
+        }category=${currentFilter}`;
+      }
+
+      if (isSortedByPopularityAsc !== null) {
+        const sortOrder = isSortedByPopularityAsc ? "asc" : "desc";
+        searchUrl += `${
+          searchUrl.includes("?") ? "&" : "?"
+        }sortBy=popularity&order=${sortOrder}`;
+      }
+      if (isSortedByNameAsc !== null) {
+        const sortOrder = isSortedByNameAsc ? "asc" : "desc";
+        searchUrl += `${
+          searchUrl.includes("?") ? "&" : "?"
+        }sortBy=name&order=${sortOrder}`;
+      }
+
+      fetch(searchUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          allData = data;
+          filteredData = allData;
+          const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+          updatePagination(totalPages);
+          loadPageData(currentPage);
+          spiner.style.display = "none";
+          spinerB.style.display = "none";
+        })
+        .catch((error) => {
+          console.error(error);
+          spiner.style.display = "none";
+          spinerB.style.display = "none";
+        });
     }, 500);
   });
 
   // Сортировка по популярности
-  sortButton.addEventListener("click", () => {
+  const sortbtn1 = document.getElementById("sort-id1");
+  const sortbtn2 = document.getElementById("sort-id2");
+
+  sortbtn1.addEventListener("click", () => {
     spiner.style.display = "flex";
     spinerB.style.display = "flex";
     isSortedByPopularityAsc = !isSortedByPopularityAsc; // сброс флаг сортировки
+    isSortedByNameAsc = null; // сбрасываем сортировку по алфавиту
 
     const sortOrder = isSortedByPopularityAsc ? "asc" : "desc";
+    if (isSortedByPopularityAsc) {
+      sortbtn2.style.backgroundColor = '#fff';
+      sortbtn1.style.backgroundColor = "rgb(0, 200, 255)";
+    } else {
+      sortbtn2.style.backgroundColor = '#fff';
+      sortbtn1.style.backgroundColor = "red";
+    }
 
     let sortUrl = `https://672885dc270bd0b97555ee35.mockapi.io/repos?sortBy=popularity&order=${sortOrder}`;
-    if (isSortedByPopularityAsc) {
-      sortButton.style.backgroundColor = "red";
-    } else {
-      sortButton.style.backgroundColor = "rgb(0, 200, 255)";
-    }
-    // Добавляем параметры фильтрации и поиска если они есть
+
     if (currentFilter !== "all") {
       sortUrl += `&category=${currentFilter}`;
     }
+
+    if (currentSearchTerm) {
+      sortUrl += `&name=${currentSearchTerm}`;
+    }
+
+    fetch(sortUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        allData = data;
+        filteredData = allData;
+        const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+        updatePagination(totalPages);
+        loadPageData(currentPage);
+        spiner.style.display = "none";
+        spinerB.style.display = "none";
+      })
+      .catch((error) => {
+        console.error(error);
+        spiner.style.display = "none";
+        spinerB.style.display = "none";
+      });
+  });
+
+  sortbtn2.addEventListener("click", () => {
+    spiner.style.display = "flex";
+    spinerB.style.display = "flex";
+    isSortedByNameAsc = !isSortedByNameAsc; // сброс флаг сортировки
+    isSortedByPopularityAsc = null; // сбрасываем сортировку по популярности
+
+    const sortOrder = isSortedByNameAsc ? "asc" : "desc";
+    if (isSortedByNameAsc) {
+      sortbtn2.style.backgroundColor = "rgb(0, 200, 255)";
+      sortbtn1.style.backgroundColor = '#fff';
+    } else {
+      sortbtn2.style.backgroundColor = "red";
+      sortbtn1.style.backgroundColor = '#fff';
+    }
+
+    let sortUrl = `https://672885dc270bd0b97555ee35.mockapi.io/repos?sortBy=name&order=${sortOrder}`;
+
+    if (currentFilter !== "all") {
+      sortUrl += `&category=${currentFilter}`;
+    }
+
     if (currentSearchTerm) {
       sortUrl += `&name=${currentSearchTerm}`;
     }
