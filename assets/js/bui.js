@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const url = "https://672885dc270bd0b97555ee35.mockapi.io/id";
   const id = 1;
-  const urll = `${url}/${id}`;
-
   const cardsContainer = document.getElementById("cards");
   const searchInput = document.getElementById("input");
   const filterButtons = document.querySelectorAll(".main__header__filter");
@@ -19,8 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentBlock = 0;
   let currentFilter = "all";
   let currentSearchTerm = "";
-  let isSortedByPopularityAsc = null; 
-  let isSortedByNameAsc = null; 
+  let sortPopular = null;
+  let isSortedByNameAsc = null;
   let searchTimeout;
 
   function displayCards(data) {
@@ -103,8 +101,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (currentSearchTerm) {
       pagURL += `&name=${currentSearchTerm}`;
     }
-    if (isSortedByPopularityAsc !== null) {
-      const sortOrder = isSortedByPopularityAsc ? "asc" : "desc";
+    if (sortPopular !== null) {
+      const sortOrder = sortPopular ? "asc" : "desc";
       pagURL += `&sortBy=popularity&order=${sortOrder}`;
     }
     if (isSortedByNameAsc !== null) {
@@ -143,8 +141,8 @@ document.addEventListener("DOMContentLoaded", function () {
       }name=${currentSearchTerm}`;
     }
 
-    if (isSortedByPopularityAsc !== null) {
-      const sortOrder = isSortedByPopularityAsc ? "asc" : "desc";
+    if (sortPopular !== null) {
+      const sortOrder = sortPopular ? "asc" : "desc";
       filterUrl += `${
         filterUrl.includes("?") ? "&" : "?"
       }sortBy=popularity&order=${sortOrder}`;
@@ -205,8 +203,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }category=${currentFilter}`;
       }
 
-      if (isSortedByPopularityAsc !== null) {
-        const sortOrder = isSortedByPopularityAsc ? "asc" : "desc";
+      if (sortPopular !== null) {
+        const sortOrder = sortPopular ? "asc" : "desc";
         searchUrl += `${
           searchUrl.includes("?") ? "&" : "?"
         }sortBy=popularity&order=${sortOrder}`;
@@ -244,11 +242,11 @@ document.addEventListener("DOMContentLoaded", function () {
   sortbtn1.addEventListener("click", () => {
     spiner.style.display = "flex";
     spinerB.style.display = "flex";
-    isSortedByPopularityAsc = !isSortedByPopularityAsc; // сброс
+    sortPopular = !sortPopular; // сброс
     isSortedByNameAsc = null;
 
-    const sortOrder = isSortedByPopularityAsc ? "asc" : "desc";
-    if (isSortedByPopularityAsc) {
+    const sortOrder = sortPopular ? "asc" : "desc";
+    if (sortPopular) {
       sortbtn2.style.backgroundColor = "#fff";
       sortbtn1.style.backgroundColor = "rgb(0, 200, 255)";
     } else {
@@ -288,7 +286,7 @@ document.addEventListener("DOMContentLoaded", function () {
     spiner.style.display = "flex";
     spinerB.style.display = "flex";
     isSortedByNameAsc = !isSortedByNameAsc; // сброс
-    isSortedByPopularityAsc = null;
+    sortPopular = null;
 
     const sortOrder = isSortedByNameAsc ? "asc" : "desc";
     if (isSortedByNameAsc) {
