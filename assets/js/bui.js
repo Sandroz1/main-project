@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentBlock = 0;
   let currentFilter = "all";
   let currentSearchTerm = "";
-  let isSortedByPopularityAsc = null; // переменная для отслеживания состояния сортировки по популярности
-  let isSortedByNameAsc = null; // переменная для отслеживания состояния сортировки по алфавиту
+  let isSortedByPopularityAsc = null; 
+  let isSortedByNameAsc = null; 
   let searchTimeout;
 
   function displayCards(data) {
@@ -245,7 +245,7 @@ document.addEventListener("DOMContentLoaded", function () {
     spiner.style.display = "flex";
     spinerB.style.display = "flex";
     isSortedByPopularityAsc = !isSortedByPopularityAsc; // сброс
-    isSortedByNameAsc = null; // сбрасываем сортировку по алфавиту
+    isSortedByNameAsc = null;
 
     const sortOrder = isSortedByPopularityAsc ? "asc" : "desc";
     if (isSortedByPopularityAsc) {
@@ -287,8 +287,8 @@ document.addEventListener("DOMContentLoaded", function () {
   sortbtn2.addEventListener("click", () => {
     spiner.style.display = "flex";
     spinerB.style.display = "flex";
-    isSortedByNameAsc = !isSortedByNameAsc; // сброс флаг сортировки
-    isSortedByPopularityAsc = null; // сбрасываем сортировку по популярности
+    isSortedByNameAsc = !isSortedByNameAsc; // сброс
+    isSortedByPopularityAsc = null;
 
     const sortOrder = isSortedByNameAsc ? "asc" : "desc";
     if (isSortedByNameAsc) {

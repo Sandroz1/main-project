@@ -44,10 +44,10 @@ async function fetchUsers() {
   const response = await fetch(url);
   const data = await response.json();
   users = data;
-  qwe(users);
+  reg(users);
 }
 
-function qwe(mas) {
+function reg(mas) {
   const foundUser = mas.find((user) => user.password === regPas.value);
   const foundLogin = mas.find((user) => user.login === regLog.value);
 
@@ -139,7 +139,6 @@ class Slider {
     this.nextButton = document.querySelector(nextButton);
     this.sliderCount = 0;
     this.sliderWidth = this.sliderImages[0].offsetWidth;
-
     this.init();
   }
 
