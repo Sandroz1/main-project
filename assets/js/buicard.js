@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+
   class ReviewsManager {
     constructor() {
       this.url = "https://672885dc270bd0b97555ee35.mockapi.io/repos";
@@ -227,4 +227,3 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   new AttractionCard();
-});

@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+
   const url = "https://672885dc270bd0b97555ee35.mockapi.io/id";
   const id = 1;
   const urll = `${url}/${id}`;
@@ -348,4 +348,4 @@ document.addEventListener("DOMContentLoaded", function () {
       spiner.style.display = "none";
       spinerB.style.display = "none";
     });
-});
+
