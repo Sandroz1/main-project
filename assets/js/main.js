@@ -57,10 +57,9 @@ function qwe(mas) {
       modalLogin.style.display = "none";
       if (isAdmin) {
         adminPanel.style.display = "flex";
-      }else{
+      } else {
         adminPanel.style.display = "none";
       }
-
     } else {
       alert(`Successful ${regPas.value}`);
       modalLogin.style.display = "none";
@@ -75,8 +74,6 @@ function qwe(mas) {
 logbtn.addEventListener("click", () => {
   fetchUsers();
 });
-
-
 
 const mapbutton = document.querySelector(".main__content__button");
 const mapfirst = document.querySelector(".map-first");
@@ -127,9 +124,14 @@ function cardAdd3() {
   hide.style.display = "flex";
 }
 
-
 class Slider {
-  constructor(sliderContainer, sliderLine, sliderImages, prevButton, nextButton) {
+  constructor(
+    sliderContainer,
+    sliderLine,
+    sliderImages,
+    prevButton,
+    nextButton
+  ) {
     this.sliderContainer = document.querySelector(sliderContainer);
     this.sliderLine = document.querySelector(sliderLine);
     this.sliderImages = document.querySelectorAll(sliderImages);
@@ -164,11 +166,13 @@ class Slider {
   }
 
   updateSlider() {
-    this.sliderLine.style.transform = `translateX(${-this.sliderCount * this.sliderWidth}px)`;
+    this.sliderLine.style.transform = `translateX(${
+      -this.sliderCount * this.sliderWidth
+    }px)`;
   }
 }
 
-// Использование класса Slider
+// Использование
 const slider = new Slider(
   ".main__slider__container",
   ".main__slider__line",

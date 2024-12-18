@@ -1,7 +1,3 @@
-
-
-
-
 ////////////////////ОТЗЫВЫ///////////////////////
 document.addEventListener("DOMContentLoaded", function () {
   const url = "https://672885dc270bd0b97555ee35.mockapi.io/repos";
@@ -29,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .catch((error) => console.error("Error loading reviews:", error));
   }
-  
+
   function createReviewElement(review) {
     const div = document.createElement("div");
     div.className = "review";
@@ -38,7 +34,9 @@ document.addEventListener("DOMContentLoaded", function () {
       <p class='rewiew__desc-text'>${review.text}</p>
       <button class="delete-review" data-id="${review.id}">Удалить</button>
     `;
-    div.querySelector(".delete-review").addEventListener("click", () => deleteReview(review.id));
+    div
+      .querySelector(".delete-review")
+      .addEventListener("click", () => deleteReview(review.id));
     return div;
   }
 
@@ -76,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const newReview = {
-      id: Date.now().toString(), // Генерируем уникальный ID для нового отзыва
+      id: Date.now().toString(), // случ айди
       name: nameInput.value,
       text: textInput.value,
     };
@@ -90,10 +88,12 @@ document.addEventListener("DOMContentLoaded", function () {
         nameInput.value = "";
         textInput.value = "";
       })
-      .catch((error) => console.error("Error fetching attraction data:", error));
+      .catch((error) =>
+        console.error("Error fetching attraction data:", error)
+      );
   });
 
-  // Загрузка отзывов при загрузке страницы
+  // Загрузка отзывов
   loadReviews();
 });
 
@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const spiner = document.querySelector(".spiner");
-  const rewiews = document.querySelector(".reviews")
+  const rewiews = document.querySelector(".reviews");
   spiner.style.display = "flex";
 
   fetch(url)
@@ -210,4 +210,3 @@ document.addEventListener("DOMContentLoaded", function () {
       rewiews.style.display = "block";
     });
 });
-

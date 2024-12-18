@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentBlock = 0;
   let currentFilter = "all";
   let currentSearchTerm = "";
-  let isSortedByPopularityAsc = null; // переменная для отслеживания состояния сортировки
+  let isSortedByPopularityAsc = null; // переменная для отслеживания состояния сортировки по популярности
   let isSortedByNameAsc = null; // переменная для отслеживания состояния сортировки по алфавиту
   let searchTimeout;
 
@@ -174,7 +174,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  // Смена цвета по нажатию на кнопку
   filterButtons.forEach((button) => {
     filterButtons[0].style.backgroundColor = "#00C8FF";
     button.addEventListener("click", () => {
@@ -245,15 +244,15 @@ document.addEventListener("DOMContentLoaded", function () {
   sortbtn1.addEventListener("click", () => {
     spiner.style.display = "flex";
     spinerB.style.display = "flex";
-    isSortedByPopularityAsc = !isSortedByPopularityAsc; // сброс флаг сортировки
+    isSortedByPopularityAsc = !isSortedByPopularityAsc; // сброс
     isSortedByNameAsc = null; // сбрасываем сортировку по алфавиту
 
     const sortOrder = isSortedByPopularityAsc ? "asc" : "desc";
     if (isSortedByPopularityAsc) {
-      sortbtn2.style.backgroundColor = '#fff';
+      sortbtn2.style.backgroundColor = "#fff";
       sortbtn1.style.backgroundColor = "rgb(0, 200, 255)";
     } else {
-      sortbtn2.style.backgroundColor = '#fff';
+      sortbtn2.style.backgroundColor = "#fff";
       sortbtn1.style.backgroundColor = "red";
     }
 
@@ -294,10 +293,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const sortOrder = isSortedByNameAsc ? "asc" : "desc";
     if (isSortedByNameAsc) {
       sortbtn2.style.backgroundColor = "rgb(0, 200, 255)";
-      sortbtn1.style.backgroundColor = '#fff';
+      sortbtn1.style.backgroundColor = "#fff";
     } else {
       sortbtn2.style.backgroundColor = "red";
-      sortbtn1.style.backgroundColor = '#fff';
+      sortbtn1.style.backgroundColor = "#fff";
     }
 
     let sortUrl = `https://672885dc270bd0b97555ee35.mockapi.io/repos?sortBy=name&order=${sortOrder}`;
