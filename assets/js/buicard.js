@@ -94,7 +94,7 @@ class Reviews {
     });
   }
 }
- Reviews();
+new  Reviews();
 
 class BurgerMenu {
   constructor() {
